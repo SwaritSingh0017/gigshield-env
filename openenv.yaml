@@ -1,0 +1,28 @@
+name: gigshield_env
+version: 1.0.0
+
+description: >
+  A reinforcement learning environment simulating gig workers making decisions
+  under uncertainty (weather, demand, fatigue) to maximize earnings.
+
+entry_point: env.env:GigShieldEnv
+
+observation_space:
+  weather: string
+  demand: float
+  distance: integer
+  earnings_today: integer
+  fatigue: float
+
+action_space:
+  action: string
+
+reward_range: [-1.0, 2.0]
+
+tasks:
+  - name: easy
+    description: Earn 300 safely
+  - name: medium
+    description: Earn 500 under mixed conditions
+  - name: hard
+    description: Earn 800 under difficult conditions
