@@ -11,7 +11,7 @@ def root():
     return {"message": "GigShield Env Running"}
 
 
-@app.get("/reset")
+@app.post("/reset")
 def reset():
     obs = env.reset()
     return obs.dict()
@@ -22,12 +22,7 @@ def step(action: dict):
     act = action.get("action", "wait")
     obs, reward, done, info = env.step(act)
 
-    return {
-        "observation": obs.dict(),
-        "reward": reward,
-        "done": done,
-        "info": info
-    }
+    return {"observation": obs.dict(), "reward": reward, "done": done, "info": info}
 
 
 # ✅ REQUIRED MAIN FUNCTION
